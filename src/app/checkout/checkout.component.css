@@ -1,0 +1,70 @@
+.empty {
+    margin: 20%;
+    font-size: 3rem;
+    line-height: 3rem;
+    text-align: center;
+}
+
+.all {
+    /* display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start; */
+    margin: 0% 10% 10% 10%;
+    width: 80%;
+}
+
+img {
+    height: 10rem;
+    width: 8rem;
+    
+}
+ul {
+    list-style-type: none;
+    width: 90%;
+    
+}
+
+li {
+    /* display: flex;
+    flex-wrap: center;
+    align-items: center; */
+    border-bottom: 1px solid gray;
+}
+
+.order {
+    font-size: 2rem;
+    margin: 1rem;
+    text-align: center;
+}
+
+.name, .quantity, .price, .remove, img {
+    margin: 0.3rem 0rem;
+    text-align: center;
+    
+  }
+
+  mat-spinner {
+    max-width: 2rem;
+    max-height: 2rem;
+  }
+
+  .cancel {
+    /* margin: 2rem 25% 2rem 25%; */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+  }
+
+  .cancelButton {
+    margin: 0.5rem;
+  }
+
+  .editButton {
+    margin: 0.5rem;
+  }
+
+  .removeButton {
+    margin: 0.5rem;
+  }
+

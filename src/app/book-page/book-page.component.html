@@ -1,0 +1,36 @@
+<app-search></app-search>
+<p *ngIf="!book"  class="empty" fxLayoutAlign="center center">No book found.</p>
+<div *ngIf="book" class="content">
+<img [src]="book.image" alt="book.name">
+<div class="book">
+    <div class="name">
+        {{book.name}}
+    </div>
+    <div class="genre">
+        Genres: {{book.genre}}
+    </div>
+    <div class="pages">
+       Pages: {{book.pages}}
+    </div>
+    <div class="publisher">
+        {{book.publisher}}
+    </div>
+    <div class="date">
+         {{book.date.toDateString()}}    
+    </div>
+    <div class="price">
+       Price: ${{book.price}}
+    </div>
+    <div class="rating">
+       Rating: {{bookService.averageRating(book) | number: '1.0-2'}} / 10
+    </div>
+    <div class="buttons" fxLayoutGap="15px" fxLayout="row" fxLayoutAlign="center">
+    <button (click)="cartAdd()" type="submit" mat-raised-button color="primary">Add to Cart<mat-icon>shopping_cart</mat-icon></button>
+   </div>
+    <div class="review">
+        Reviews: 
+        <div *ngFor="let singleReview of book.review">
+            <p>{{singleReview}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+
+<p *ngIf="!(cart && cart.items.length > 0)"  class="empty" fxLayoutAlign="center center">Cart is empty.</p>
+<div *ngIf="cart && cart.items.length > 0" class="all" fxLayout="column"  fxLayoutAlign="center center">
+    <p class="cart">Items in cart:</p>
+<ul>
+    <li *ngFor="let cartItem of cart.items">
+        <div class="content"  fxLayout="row"  fxLayout.lt-md="column" fxLayoutAlign="center center"  fxLayoutGap="15px">
+        <img [src]="cartItem.book.image" [alt]="cartItem.book.name">
+            <div class="name">
+                <a routerLink="/book/{{cartItem.book.id}}">
+                    {{cartItem.book.name}}
+                </a>
+            </div>
+            <div class="quantity">
+                <input #i matInput type="number" name="quanitity" placeholder="1" value="{{cartItem.quantity}}" min="1" max="99" (change)="changeQuantity(cartItem, i.value)">
+            </div>
+
+            <div class="price">
+                ${{cartItem.price}}
+            </div>
+            <div class="remove">
+                <button mat-raised-button color="primary" (click)="remove(cartItem)">Remove</button>
+            </div>
+        <br/>
+        <div class="info" fxLayout="column" fxLayoutAlign="center center">
+            <div class="genre">
+           Genres: {{cartItem.book.genre}}
+        </div>
+        <div class="pages">
+          Pages: {{cartItem.book.pages}}
+        </div>
+        <div class="publisher">
+            Publisher: {{cartItem.book.publisher}}
+        </div>
+        <div class="date">
+           Date: {{cartItem.book.date.toDateString()}}
+        </div>
+        <div class="status">
+            Status: N/A
+          </div>
+          <div class="rating">
+            Rating: {{cartItem.book.rating}} / 10
+          </div>
+        </div>
+    </div>
+    </li>
+</ul>
+
+<div class="sum">
+    <div>
+        <div class="count">Total of different items in cart: {{cart.items.length}}</div>
+        <div class="total">Total price of all items in cart: ${{cart.totalPrice}}</div>
+    </div>
+</div>
+
+<button routerLink="/checkout" class="checkout" mat-raised-button color="primary" fxLayoutAlign="center center" (click)="checkout(); this.cartService.waitTimeout(cart)" [disabled]="this.userService.currentUser === null"  Submit>Checkout</button>
+<p class="login" fxLayoutAlign="center center" *ngIf="!this.userService.currentUser">Log in to place your order.</p>
+
+<!-- STATUS PRISTIGLO, CEKA SE, OTKAZANO -->
+
+</div>

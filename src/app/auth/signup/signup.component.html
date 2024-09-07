@@ -1,0 +1,47 @@
+<section>
+<p class="signup">Sing up for a free account</p>
+
+    <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+        <mat-form-field hintLabel="Pleae enter your email">
+            <input type="email" matInput placeholder="Email" ngModel name="email" required email #emailInput="ngModel">
+            <mat-error *ngIf="emailInput.hasError('required')">Field should not be empty.</mat-error>
+            <mat-error *ngIf="!emailInput.hasError('required')">Please use the correct email format / address.</mat-error>
+        </mat-form-field>
+        <mat-form-field hintLabel="Please enter a minimum of 8 characters">
+            <input type="password" matInput placeholder="Password" ngModel name="password" required minlength="8" #passInput="ngModel">
+            <mat-hint align="end">{{ passInput.value?.length }} / 8</mat-hint>
+        </mat-form-field>
+        
+
+        <mat-form-field hintLabel="Please enter your name">
+            <input type="text" matInput placeholder="Name" ngModel name="name" required #nameInput="ngModel">
+        </mat-form-field>
+
+        <mat-form-field hintLabel="Please enter your last name">
+            <input type="text" matInput placeholder="Last Name" ngModel name="lastName" required #lastNameInput="ngModel">
+        </mat-form-field>
+
+        <mat-form-field hintLabel="Please enter your phone number">
+            <input type="text" matInput placeholder="Phone Number" ngModel name="phone" required #phoneNumberInput="ngModel">
+        </mat-form-field>
+
+        <mat-form-field hintLabel="Please enter your address">
+            <input type="text" matInput placeholder="Address" ngModel name="address" required #addressInput="ngModel">
+        </mat-form-field>
+
+        <mat-form-field hintLabel="Please enter your favorite genre(s)">
+            <input type="text" matInput placeholder="Favorite Genres" ngModel name="genres" required #genresInput="ngModel">
+        </mat-form-field>
+
+
+
+        <mat-checkbox color="primary" ngModel name="acceptance" required>
+            I accept the terms and conditions.
+        </mat-checkbox>
+
+        <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid" Submit>Submit</button>
+        <mat-label *ngIf="errorExists"> {{errorText}} </mat-label>
+        <a routerLink="/login">I already have an account.</a>
+    </form>
+</section>

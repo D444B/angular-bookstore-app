@@ -1,0 +1,51 @@
+<!-- <div fxLayoutAlign="center center">
+    <mat-form-field>
+        <input matInput type="text" (keyup)="doFilter($any($event.target).value)" placeholder="Search">
+    </mat-form-field>
+</div> -->
+
+
+
+<app-search></app-search>
+<p *ngIf="!(books && books.length > 0)"  class="empty" fxLayoutAlign="center center">No books found.</p>
+<ul>
+    
+        <li *ngFor="let book of books">
+            <div class="content">
+            <a routerLink="/book/{{book.id}}">
+        
+        <img src="{{book.image}}" alt=""/>
+        <div class="book">
+            <div class="name">
+                {{book.name}}
+            </div>
+            <div class="genre">
+                Genres: {{book.genre}}
+            </div>
+            <div class="pages">
+               Pages: {{book.pages}}
+            </div>
+            <div class="publisher">
+                {{book.publisher}}
+            </div>
+            <div class="date">
+                 {{book.date.toDateString()}}    
+            </div>
+            <div class="price">
+               Price: ${{book.price}}
+            </div>
+            <div class="rating">
+               Rating: {{bookService.averageRating(book) | number: '1.0-2'}} / 10
+            </div>
+          </div>
+    </a>
+    <div class="buttons" fxLayoutGap="15px" fxLayout="row" fxLayoutAlign="center">
+             
+        <!-- <button type="submit" mat-raised-button color="primary">View Reviews</button> -->
+    <button (click)="cartAdd(book)" type="submit" mat-raised-button color="primary">Add to Cart<mat-icon>shopping_cart</mat-icon></button>
+    </div>
+</div>
+    </li>
+
+</ul>
+

@@ -1,0 +1,6 @@
+<div fxLayoutGap="15px" fxLayoutAlign.sm="center center" fxLayoutAlign.md="start cemter">
+    
+    <input #s matInput type="text" placeholder="Search books" (keyup.enter)="search(s.value)" [value]="searchTerm">
+    <button (click)="search(s.value)" mat-raised-button color="primary">Search</button>
+</div>
+

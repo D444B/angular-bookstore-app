@@ -1,0 +1,11 @@
+div {
+    display: flex;
+    margin: 3rem;
+}
+
+input {
+height: 2rem;
+width: 24rem;
+font-size: 1rem;
+
+}

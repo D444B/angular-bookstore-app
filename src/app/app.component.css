@@ -1,0 +1,35 @@
+.spacer1 {
+    flex: 1 1 auto;
+  }
+
+.footer {
+position: fixed;
+bottom: 0;
+height: 40px;
+font-size: 14px;
+
+}
+
+.header div a, a {
+margin: 15px;
+color: white;
+text-decoration: none;
+
+}
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+  height: 100%;
+}
+
+mat-sidenav a {
+  color: black;
+  font-size: 1rem;
+
+}
+
+
+
+mat-sidenav {
+  width: 200px;
+}
+

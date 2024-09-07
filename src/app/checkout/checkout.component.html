@@ -1,0 +1,61 @@
+<p *ngIf="userService.currentUser ? !(userService.currentUser.carts.length > 0) : true"  class="empty" fxLayoutAlign="center center">Your checkout list is empty.</p>
+<div *ngIf="userService.currentUser ? (userService.currentUser.carts.length > 0) : false" class="all" fxLayout="column"  fxLayoutAlign="center center">
+<p class="order">Ordered items:</p>
+<ul *ngFor="let cart of userService.currentUser?.carts">
+    <li *ngFor="let cartItem of cart.items">
+        <div class="content"  fxLayout="row"  fxLayout.lt-md="column" fxLayoutAlign="center center"  fxLayoutGap="15px">
+        <img [src]="cartItem.book.image" [alt]="cartItem.book.name">
+        <div class="name">
+            <a routerLink="/book/{{cartItem.book.id}}">
+                {{cartItem.book.name}}
+            </a>
+        </div>
+        <div class="quantity" >
+            Quantity: {{cartItem.quantity}}
+        </div>
+
+        <div class="price">
+            ${{cartItem.price}}
+        </div>
+        <div class="status" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5px">
+      
+            <button mat-raised-button [disabled]="cart.wait || cart.canceled " color="primary" [mat-menu-trigger-for]="menu">Rate this book</button>
+            <mat-menu class="menu" #menu="matMenu" >
+                <!-- <ul class="menu-ul" *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]"> -->
+                <button *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" (click)="bookService.rate(cartItem.book, userService.currentUser!, i)" mat-menu-item>{{i}}</button>
+               
+                <!-- <button #v (click)="bookService.rate(cartItem.book, userService.currentUser!, v.value)" value="1" mat-menu-item>1</button>
+                <button value="2" mat-menu-item>2</button>
+                <button value="3" mat-menu-item>3</button>
+                <button value="4" mat-menu-item>4</button>
+                <button value="5" mat-menu-item>5</button>
+                <button value="6" mat-menu-item>6</button>
+                <button value="7" mat-menu-item>7</button>
+                <button value="8" mat-menu-item>8</button>
+                <button value="9" mat-menu-item>9</button>
+                <button value="10" mat-menu-item>10</button>
+
+                 -->
+                 
+            </mat-menu>
+
+
+        </div>
+        <div class="remove">
+           
+        </div>
+        </div>
+        
+    <br/>
+    </li>
+    <div class="cancel" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5px">
+        <mat-spinner color="primary" *ngIf="cart.wait && !cart.canceled"></mat-spinner>
+        <div *ngIf="cart.wait && !cart.canceled">{{cart.statusEnum.inProgress}}</div>
+        <div *ngIf="this.cartService.isDelivered(cart)">{{cart.statusEnum.delivered}}</div>
+        <div *ngIf="!cart.wait && cart.canceled">{{cart.statusEnum.canceled}}</div>
+    <button mat-raised-button color="primary"  [disabled]="!cart.wait" (click)="this.cartService.cancel(cart)" fxLayoutAlign="center center" class="cancelButton">Cancel</button>
+    <button mat-raised-button color="primary"  [disabled]="this.cartService.isDelivered(cart)" (click)="this.cartService.editCanceledCart(cart)" fxLayoutAlign="center center" class="editButton">Edit Cart</button>
+    <button mat-raised-button color="primary"  [disabled]="!this.cartService.isDelivered(cart)" (click)="this.cartService.removeCart(cart)" fxLayoutAlign="center center" class="removeButton">Remove Cart</button>
+</div>
+</ul>
+

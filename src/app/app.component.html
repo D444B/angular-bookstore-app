@@ -1,0 +1,58 @@
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav opened="false">
+      <mat-nav-list fxLayout="column">
+        <a routerLink="/" (click)="sidenav.close()">Home Page</a>
+        <a *ngIf="!this.userService.currentUser" routerLink="/login" (click)="sidenav.close()">Login</a>
+        <a *ngIf="!this.userService.currentUser" routerLink="/signup" (click)="sidenav.close()">Signup</a>
+        <button  mat-raised-button color="accent" *ngIf="this.userService.currentUser" (click)="openProfile(this.userService.currentUser.id);sidenav.close() ">Profile</button> 
+      <button *ngIf="this.userService.currentUser" (click)="this.userService.logout(); sidenav.close()" mat-raised-button type="submit" color="accent">Logout</button>
+      <button *ngIf="this.userService.currentUser" mat-raised-button color="accent" routerLink="/checkout" (click)="sidenav.close()">Checkout</button>
+      <span class="arrow" (click)="sidenav.close()" fxLayout="row" fxLayoutAlign="center center"><mat-icon>arrow_back</mat-icon>Close navigation.</span>
+      </mat-nav-list>
+    </mat-sidenav>
+
+
+  <mat-sidenav-content>
+    <mat-toolbar class="header" color="primary" >
+  <div fxHide.gt-xs>
+    <button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+
+  <a routerLink="/">Book Store</a>
+    <div fxLayoutGap="15px" fxHide.xs>
+      <a *ngIf="!this.userService.currentUser" routerLink="/login" >Login</a>
+      <a *ngIf="!this.userService.currentUser" routerLink="/signup">Signup</a>
+    </div> 
+   
+    
+    <span class="spacer1"><div fxFlex fxLayoutAlign="center center">
+      
+  </div></span>
+ 
+    <div fxLayoutGap="15px" fxHide.xs >
+      
+      <button  mat-raised-button color="accent" *ngIf="this.userService.currentUser" (click)="openProfile(this.userService.currentUser.id)">Profile of {{ this.userService.currentUser.email}}</button> 
+      <button *ngIf="this.userService.currentUser" (click)="this.userService.logout();" mat-raised-button type="submit" color="accent">Logout</button>
+      <button *ngIf="this.userService.currentUser" mat-raised-button color="accent" routerLink="/checkout">Checkout</button>
+
+      <!-- <div *ngIf="this.userService.currentUser !== null;then content"></div> -->
+      <!-- <ng-template #content><button  mat-raised-button color="accent"  (click)="openProfile(this.userService.currentUser!.id)">Profile of {{ this.userService.currentUser!.email }}</button></ng-template> -->
+    </div>
+      <a routerLink="/cart-page"><mat-icon>shopping_cart</mat-icon></a>
+ 
+</mat-toolbar>
+<router-outlet></router-outlet>
+</mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+<mat-toolbar class="footer" color="primary" >
+  <div fxFlex fxLayoutAlign="center center">
+      <p>Dimitrije Bogosavljević 2020202805 Singidunum</p>
+  </div>
+
+</mat-toolbar>

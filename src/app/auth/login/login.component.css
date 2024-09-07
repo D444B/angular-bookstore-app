@@ -1,0 +1,20 @@
+form {
+    height: 500px;
+}
+
+mat-form-field, a, button, mat-checkbox {
+
+margin: 10px;
+}
+
+
+mat-form-field {
+    width: 400px;
+}
+
+.login {
+    text-align: center;
+    margin: 2rem 1rem 1rem 2rem;
+    font-size: 2rem;
+    line-height: 2rem;
+}

@@ -1,0 +1,74 @@
+.empty {
+    margin: 20%;
+    font-size: 3rem;
+    line-height: 3rem;
+    text-align: center;
+}
+
+
+.all {
+    /* display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start; */
+    margin: 0% 10% 10% 10%;
+    width: 80%;
+}
+
+img {
+    height: 10rem;
+    width: 8rem;
+    
+}
+ul {
+    list-style-type: none;
+    width: 90%;
+    
+}
+
+li {
+    /* display: flex;
+    flex-wrap: center;
+    align-items: center; */
+    border-bottom: 1px solid gray;
+}
+
+
+
+.name, .quantity, .price, .remove, img {
+  margin: 0.3rem 0rem;
+  text-align: center;
+  
+}
+
+input {
+    width: 2rem;
+    height: 1.5rem;
+}
+
+.cart {
+    font-size: 2rem;
+    margin: 1rem;
+    text-align: center;
+}
+
+.count, .total {
+font-size: 1.5rem;
+text-align: center;
+margin: 1rem;
+}
+
+.sum {
+    margin: 2rem;
+}
+.name {
+    font-size: 1.2em;
+}
+
+.checkout {
+    margin-bottom: 2rem;
+}
+
+.login {
+    margin-bottom: 2rem;
+    padding: 1rem;
+}
